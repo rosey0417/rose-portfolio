@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Maryrose Aquino — Email Marketing VA</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f7f3ec;
+    --warm: #ede7d9;
+    --gold: #b8903a;
+    --gold-light: #d4aa5a;
+    --dark: #1a1612;
+    --mid: #3d3328;
+    --muted: #8a7a60;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(247,243,236,0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(184,144,58,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--dark);
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 120px 64px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,144,58,0.12);
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    bottom: 80px; left: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,144,58,0.08);
+  }
+
+  .hero-tag {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+
+  .hero-name em { font-style: italic; color: var(--gold-light); }
+
+  .hero-role {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 40px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+
+  .hero-cta:hover { background: var(--gold-light); }
+
+  .hero-right {
+    background: var(--warm);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 64px 80px;
+  }
+
+  .hero-intro-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .hero-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 27px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--mid);
+    margin-bottom: 32px;
+    max-width: 420px;
+  }
+
+  .hero-intro strong { font-weight: 600; color: var(--dark); }
+
+  .contact-row { display: flex; flex-direction: column; gap: 8px; }
+
+  .contact-item {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .contact-item span.lbl {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    min-width: 44px;
+  }
+
+  .stats-bar {
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat {
+    padding: 40px 32px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  section { padding: 96px 0; }
+  .section-inner { max-width: 1100px; margin: 0 auto; padding: 0 64px; }
+
+  .section-tag {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--dark);
+    line-height: 1.1;
+    margin-bottom: 48px;
+  }
+
+  /* HOW I HELP */
+  #value { background: var(--dark); }
+  #value .section-tag::before { background: var(--gold); }
+  #value .section-title { color: var(--cream); }
+
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .value-card {
+    background: var(--dark);
+    padding: 40px 36px;
+    transition: background 0.2s;
+  }
+
+  .value-card:hover { background: #221d17; }
+
+  .value-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--gold);
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+
+  .value-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+
+  .value-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* SERVICES */
+  #skills { background: var(--cream); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(184,144,58,0.15);
+    border: 1px solid rgba(184,144,58,0.15);
+  }
+
+  .skill-block {
+    background: var(--cream);
+    padding: 36px 40px;
+    transition: background 0.2s;
+  }
+
+  .skill-block:hover { background: var(--warm); }
+
+  .skill-cat {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .skill-block h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+
+  .skill-block p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .skill-highlight {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(184,144,58,0.35);
+    padding: 4px 12px;
+  }
+
+  /* TOOLS */
+  #tools { background: var(--warm); }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .tool-card {
+    background: var(--cream);
+    border: 1px solid rgba(184,144,58,0.2);
+    padding: 28px 28px 24px;
+    transition: border-color 0.2s;
+  }
+
+  .tool-card:hover { border-color: var(--gold); }
+
+  .tool-badge {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(184,144,58,0.3);
+    padding: 3px 10px;
+    margin-bottom: 12px;
+  }
+
+  .tool-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--dark);
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+
+  .tool-desc {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--cream); }
+
+  .exp-list { display: flex; flex-direction: column; }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(184,144,58,0.18);
+    align-items: start;
+  }
+
+  .exp-item:first-child { border-top: 1px solid rgba(184,144,58,0.18); }
+
+  .exp-period {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .exp-company {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .exp-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 14px;
+  }
+
+  .exp-content ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+  .exp-content ul li {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.6;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .exp-content ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 11px;
+  }
+
+  /* EDUCATION */
+  #education { background: var(--warm); }
+
+  .edu-single {
+    background: var(--cream);
+    border: 1px solid rgba(184,144,58,0.2);
+    padding: 40px;
+    max-width: 540px;
+  }
+
+  .edu-card-tag {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .edu-single h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .edu-single p {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--dark);
+    text-align: center;
+    padding: 96px 64px;
+  }
+
+  #contact .section-tag { justify-content: center; }
+  #contact .section-tag::before { display: none; }
+  #contact .section-title { color: var(--cream); margin-bottom: 16px; }
+
+  .contact-sub {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 300;
+    margin: 0 auto 48px;
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  .contact-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); }
+
+  .btn-outline {
+    border: 1px solid rgba(184,144,58,0.4);
+    color: var(--gold-light);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    text-decoration: none;
+    font-weight: 300;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  footer { background: #0f0c09; text-align: center; padding: 24px; }
+  footer p { font-size: 11px; letter-spacing: 0.1em; color: #4a4030; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag, .hero-name, .hero-role, .hero-cta,
+  .hero-intro-label, .hero-intro, .contact-row { animation: fadeUp 0.7s ease both; }
+
+  .hero-tag         { animation-delay: 0.1s; }
+  .hero-name        { animation-delay: 0.2s; }
+  .hero-role        { animation-delay: 0.3s; }
+  .hero-cta         { animation-delay: 0.4s; }
+  .hero-intro-label { animation-delay: 0.3s; }
+  .hero-intro       { animation-delay: 0.4s; }
+  .contact-row      { animation-delay: 0.5s; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 120px 32px 60px; min-height: 60vh; }
+    .hero-right { padding: 60px 32px; }
+    .hero-name { font-size: 52px; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .section-inner { padding: 0 32px; }
+    .value-grid, .skills-grid { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: 1fr 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 12px; }
+    nav { padding: 16px 24px; }
+    .nav-links { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Maryrose Aquino</a>
+  <ul class="nav-links">
+    <li><a href="#value">How I Help</a></li>
+    <li><a href="#skills">Services</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <span class="hero-tag">Email Marketing VA · Available Now</span>
+    <h1 class="hero-name">Mary<em>rose</em><br>Aquino</h1>
+    <p class="hero-role">Email Marketing · Admin Support · Client Relations</p>
+    <a class="hero-cta" href="#contact">Let's Work Together</a>
+  </div>
+  <div class="hero-right">
+    <p class="hero-intro-label">About Me</p>
+    <p class="hero-intro">
+      I help busy business owners <strong>grow their audience and win clients</strong> through beautifully designed email campaigns — so you can focus on running your business, not your inbox.
+    </p>
+    <div class="contact-row">
+      <div class="contact-item"><span class="lbl">Email</span> maryroseaquino99@gmail.com</div>
+      <div class="contact-item"><span class="lbl">Phone</span> +63 908 702 0919</div>
+      <div class="contact-item"><span class="lbl">Base</span> Muntinlupa City, Philippines</div>
+      <div class="contact-item"><span class="lbl">Lang</span> English · Tagalog</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">6<span style="font-size:28px">+</span></div>
+    <div class="stat-label">Years of Professional Experience</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100<span style="font-size:28px">%</span></div>
+    <div class="stat-label">Data Accuracy Record</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">3<span style="font-size:28px">+</span></div>
+    <div class="stat-label">Years in B2B Client Relations</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">2</div>
+    <div class="stat-label">Email Marketing Platforms</div>
+  </div>
+</div>
+
+<!-- HOW I HELP -->
+<section id="value">
+  <div class="section-inner">
+    <p class="section-tag">Why Hire Me</p>
+    <h2 class="section-title" style="color:var(--cream);">Here's how I lighten<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;">your workload</em></h2>
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-num">01</div>
+        <h3>I handle your emails end-to-end</h3>
+        <p>From writing the copy and designing the layout in Canva to scheduling and sending through Mailchimp — you hand me the brief and I deliver a campaign ready to go live.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">02</div>
+        <h3>You stop losing clients to silence</h3>
+        <p>I set up automated welcome sequences, follow-up flows, and newsletters that keep your audience warm — even when you're fully booked or away.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">03</div>
+        <h3>Your inbox stays organised</h3>
+        <p>I manage client correspondence, draft professional replies, and keep your communication pipeline clean — so nothing important slips through the cracks.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">04</div>
+        <h3>Your data stays accurate</h3>
+        <p>I maintain subscriber lists, track campaign metrics, and keep your CRM updated — giving you reliable numbers to make smarter marketing decisions.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">05</div>
+        <h3>You get consistent, quality output</h3>
+        <p>Backed by 6+ years of professional experience in fast-paced B2B environments, I deliver work that's on-brand, on-time, and built to a high standard every time.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">06</div>
+        <h3>You reclaim hours every week</h3>
+        <p>Admin tasks, email drafts, list management, scheduling — I take these off your plate so you can focus on the work only you can do.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-tag">What I Offer</p>
+    <h2 class="section-title">Services</h2>
+    <div class="skills-grid">
+
+      <div class="skill-block">
+        <div class="skill-cat">⭐ Signature Service</div>
+        <h3>Email Marketing Campaigns</h3>
+        <p>I design, write, and send email campaigns from start to finish. Whether it's a product launch, a weekly newsletter, or a promotional blast, I handle the visual design in Canva and the delivery through Mailchimp — keeping your audience engaged and your brand consistent.</p>
+        <span class="skill-highlight">Canva · Mailchimp</span>
+      </div>
+
+      <div class="skill-block">
+        <div class="skill-cat">⭐ Signature Service</div>
+        <h3>Email Automation & Sequences</h3>
+        <p>I build automated email flows — welcome series, re-engagement campaigns, and follow-up sequences — so your marketing runs in the background without you lifting a finger. Set it once, and let it work for you 24/7.</p>
+        <span class="skill-highlight">Mailchimp Automations</span>
+      </div>
+
+      <div class="skill-block">
+        <div class="skill-cat">Admin Support</div>
+        <h3>Inbox & Client Communication</h3>
+        <p>I manage your professional inbox, draft client-facing emails, filter and prioritise messages, and ensure every correspondence reflects your brand voice — drawing on 3+ years of high-volume B2B client relations experience.</p>
+        <span class="skill-highlight">Email · CRM Tools</span>
+      </div>
+
+      <div class="skill-block">
+        <div class="skill-cat">Admin Support</div>
+        <h3>Data Entry & List Management</h3>
+        <p>I maintain clean, up-to-date subscriber lists, tag and segment your audience for smarter targeting, and handle high-volume data entry with 100% accuracy — a standard I held consistently across every professional role.</p>
+        <span class="skill-highlight">Salesforce · ServiceNow · Excel</span>
+      </div>
+
+      <div class="skill-block">
+        <div class="skill-cat">Reporting</div>
+        <h3>Campaign Tracking & Reports</h3>
+        <p>I monitor open rates, click-throughs, and subscriber activity in Mailchimp and prepare clear, easy-to-read reports so you always know how your campaigns are performing and where to improve.</p>
+        <span class="skill-highlight">Mailchimp Analytics · Microsoft Office</span>
+      </div>
+
+      <div class="skill-block">
+        <div class="skill-cat">Visual Content</div>
+        <h3>Email Template Design</h3>
+        <p>I create branded, mobile-friendly email templates in Canva that look polished on any device. Reusable layouts mean you get visual consistency across every campaign without starting from scratch each time.</p>
+        <span class="skill-highlight">Canva</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-inner">
+    <p class="section-tag">Tech Stack</p>
+    <h2 class="section-title">Tools & Platforms</h2>
+    <div class="tools-grid">
+
+      <div class="tool-card">
+        <span class="tool-badge">Email Marketing</span>
+        <p class="tool-name">Mailchimp</p>
+        <p class="tool-desc">Campaign creation, list management, automation flows, audience segmentation, and analytics reporting.</p>
+      </div>
+
+      <div class="tool-card">
+        <span class="tool-badge">Design</span>
+        <p class="tool-name">Canva</p>
+        <p class="tool-desc">Branded email templates, promotional graphics, newsletter layouts, and visual content creation.</p>
+      </div>
+
+      <div class="tool-card">
+        <span class="tool-badge">Productivity</span>
+        <p class="tool-name">Microsoft Office</p>
+        <p class="tool-desc">Word, Excel, Outlook, and PowerPoint for documents, data management, and client reporting.</p>
+      </div>
+
+      <div class="tool-card">
+        <span class="tool-badge">CRM</span>
+        <p class="tool-name">Salesforce</p>
+        <p class="tool-desc">Client data management, contact tracking, and CRM maintenance for organised pipelines.</p>
+      </div>
+
+      <div class="tool-card">
+        <span class="tool-badge">Case Management</span>
+        <p class="tool-name">ServiceNow</p>
+        <p class="tool-desc">High-volume ticket and task management with accuracy-driven workflow processing.</p>
+      </div>
+
+      <div class="tool-card">
+        <span class="tool-badge">Communication</span>
+        <p class="tool-name">Email & Chat Platforms</p>
+        <p class="tool-desc">Professional B2B communication, quality auditing, client correspondence, and escalation handling.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-tag">Background</p>
+    <h2 class="section-title">Relevant Experience</h2>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <p class="exp-period">Aug 2022 – Jul 2025</p>
+          <p class="exp-company">Concentrix Daksh<br>Muntinlupa, PH</p>
+        </div>
+        <div class="exp-content">
+          <h3>Advisor II — B2B Client Relations & Communications</h3>
+          <ul>
+            <li>Managed ongoing written and verbal communication with high-value corporate clients, maintaining trust and long-term account health</li>
+            <li>Audited and quality-checked emails, chat, and call communications — ensuring every client touchpoint met professional standards</li>
+            <li>Onboarded and mentored new team members on professional communication etiquette and client-facing best practices</li>
+            <li>Proactively identified and resolved client issues before escalation — keeping satisfaction scores consistently high</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <p class="exp-period">Nov 2021 – Jan 2022</p>
+          <p class="exp-company">Conduent<br>Pasay City, PH</p>
+        </div>
+        <div class="exp-content">
+          <h3>HR Solutions Services Associate III — Admin & Documentation</h3>
+          <ul>
+            <li>Processed and managed high volumes of official documents and employment contracts with 100% data accuracy</li>
+            <li>Acted as the key point of contact for HR Business Partners — coordinating across teams to resolve documentation issues swiftly</li>
+            <li>Demonstrated the ability to handle sensitive information, meet strict deadlines, and keep meticulous records under pressure</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <p class="section-tag">Academic Background</p>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-single">
+      <p class="edu-card-tag">Degree</p>
+      <h3>BS Information Technology</h3>
+      <p>Pamantasan ng Lungsod ng Muntinlupa, Philippines · 2021 – 2024<br><br>A strong foundation in digital systems, data management, and technology tools — directly supporting my work in email marketing platforms and CRM management.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-tag">Get in Touch</p>
+  <h2 class="section-title">Ready to grow your<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;">email list together?</em></h2>
+  <p class="contact-sub">I'm available now for remote work. If you're looking for a reliable VA who can take your email marketing off your plate and keep your audience engaged — let's talk.</p>
+  <div class="contact-actions">
+    <a class="btn-primary" href="mailto:maryroseaquino99@gmail.com">Email Me</a>
+    <a class="btn-outline" href="tel:+639087020919">+63 908 702 0919</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Maryrose Aquino · Email Marketing Virtual Assistant · Muntinlupa City, Philippines</p>
+</footer>
+
+</body>
+</html>
